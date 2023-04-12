@@ -1,0 +1,26 @@
+-Create a Grocery Store Database
+
+create table store (product_ID INTEGER, name TEXT, price INTEGER, aisle_number INTEGER, quantity INTEGER);
+
+INSERT INTO store VALUES (1, "apples", 2.99, 2, 40);
+INSERT INTO store VALUES (2, "grapes", 4.99, 2, 80);
+INSERT INTO store VALUES (3, "beef", 7.49, 4, 34);
+INSERT INTO store VALUES (4, "steak", 14.99, 4, 27);
+INSERT INTO store VALUES (5, "ibuprofen", 8.99, 7, 50);
+INSERT INTO store VALUES (6, "Lactaid", 11.99, 7, 40);
+INSERT INTO store VALUES (7, "bread", 3.29, 1, 64);
+INSERT INTO store VALUES (8, "milk", 4.39, 5, 82);
+INSERT INTO store VALUES (9, "cheese", 2.99, 5, 114);
+INSERT INTO store VALUES (10, "bananas", 1.99, 2, 87);
+INSERT INTO store VALUES (11, "Mixed nuts", 3.47, 6, 96);
+INSERT INTO store VALUES (12, "chicken nuggets", 7.99, 4, 46);
+INSERT INTO store VALUES (13, "pizza", 9.99, 8, 36);
+INSERT INTO store VALUES (14, "beer", 13.99, 10, 38);
+INSERT INTO store VALUES (15, "water", 2.99, 10, 246);
+
+--Display the database ordered by price.
+SELECT * FROM store 
+ORDER BY price desc;
+
+--How many total items are in the store?
+SELECT SUM(quantity) FROM store ORDER BY price;

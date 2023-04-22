@@ -1,0 +1,52 @@
+CREATE TABLE artists (id INTEGER PRIMARY KEY AUTOINCREMENT, stage_name TEXT, real_name TEXT);
+
+INSERT INTO artists VALUES (1, "Lady Gaga", "Stefani Germanotta");
+INSERT INTO artists VALUES (2, "Elton John", "Reginald Dwight");
+INSERT INTO artists VALUES (3, "Prince", "Prince Nelson");
+INSERT INTO artists VALUES (4, "Mac Miller", "Malcolm McCormick");
+INSERT INTO artists VALUES (5, "Billy Joel", "William Joel");
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, song_name TEXT, year_released INTEGER, celeb_id INTEGER);
+
+INSERT INTO songs VALUES (1, "Bad Romance", 2009, 1);
+INSERT INTO songs VALUES (2, "Stupid Love", 2020, 1);
+INSERT INTO songs VALUES (3, "Tiny Dancer", 1971, 2);
+INSERT INTO songs VALUES (4, "Your Song", 1970, 2);
+INSERT INTO songs VALUES (5, "Raspberry Beret", 1985, 3);
+INSERT INTO songs VALUES (6, "When Doves Cry", 1984, 3);
+INSERT INTO songs VALUES (7, "The Spins", 2010, 4);
+INSERT INTO songs VALUES (8, "Good News", 2020, 4);
+INSERT INTO songs VALUES (9, "Vienna", 1977, 5);
+INSERT INTO songs VALUES (10, "Movin' Out", 1977, 5);
+
+CREATE TABLE where_from (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, celeb_id INTEGER);
+
+INSERT INTO where_from VALUES (1, "New York, New York", 1);
+INSERT INTO where_from VALUES (2, "Pinner, United Kingdom", 2);
+INSERT INTO where_from VALUES (3, "Minneanapolis, Minnesota", 3);
+INSERT INTO where_from VALUES (4, "Pittsburgh, Pennsylvania", 4);
+INSERT INTO where_from VALUES (5, "New York, New York", 5);
+
+SELECT * FROM artists;
+SELECT * FROM songs;
+SELECT * FROM where_from;
+
+SELECT a.stage_name, s.song_name, year_released FROM artists AS a
+JOIN songs AS s
+ON a.id = s.celeb_id;
+
+SELECT a.stage_name, w.name FROM artists AS a
+JOIN where_from AS w
+ON a.id = w.celeb_id;
+
+In this project I undertook the challenge of designing and implementing a database to analyze information related to famous singers. 
+To accomplish this I created three distinct tables: one to capture the stage names and real names of cthe singers, another to document their songs and
+corresponding release years, and a third to track their geographic origins.
+
+To integrate the data from these tables and derive meaningful insights, I utilized the JOIN feature to merge the data from each of the tables into new tables.
+This allowed me to generate comprehensive reports that highlighted important information about the artists, including their songs, release years, and geographic origins.
+
+By leveraging advanced data analytics techniques, including JOIN operations, I was able to deliver a comprehensive and insightful analysis of singers, providing
+data-driven insights that can inform key business decisions.
+
+

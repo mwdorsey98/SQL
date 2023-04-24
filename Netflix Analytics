@@ -1,0 +1,46 @@
+#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data.
+
+
+#1. I was tasked with pulling together data from both tables to show the titles, dates added, a description, the cast, and the director from shows and movies on Netflix.
+
+SELECT n.title, n.date_added, n.description, p.cast, p.director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS n
+JOIN "CharlotteChaze/BreakIntoTech"."netflix_people" AS p
+ON n.show_id = p.show_id;
+
+
+#2. How many movie titles are there in the database? (movies only, not tv shows)
+
+SELECT COUNT(title) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie';
+
+
+#3. When was the most recent batch of tv shows and/or movies added to the database?
+
+SELECT MAX(date(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+
+#4. List all the movies and tv shows in alphabetical order. 
+
+SELECT *
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+ORDER BY title asc;
+
+
+#5. Who was the Director for the movie Bright Star? 
+
+SELECT p.director, t.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" AS p
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS t
+ON p.show_id = t.show_id
+WHERE title = 'Bright Star';
+
+
+#6. What is the oldest movie in the database and what year was it made?
+
+SELECT title, release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+ORDER BY "release_year" asc
+LIMIT 1;

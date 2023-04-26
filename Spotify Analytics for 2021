@@ -1,0 +1,42 @@
+#In this project I used data from Spotify in 2021 to get some information regarding which tracks were most popular, had the best danceability, highest tempo, etc.
+Below is the code I used to gather this data:
+
+
+
+What were the most popular songs at the time?
+
+SELECT track_name, 
+artist_name, 
+AVG(popularity)
+FROM BIT_DB.SpotifyData
+GROUP BY artist_name
+ORDER BY popularity desc
+LIMIT 10;
+
+
+What are the top ten songs with the highest danceability?
+
+SELECT track_name,
+artist_name,
+popularity,
+AVG(danceability)
+FROM BIT_DB.SpotifyData
+GROUP BY track_name
+ORDER BY avg(danceability) desc
+LIMIT 10;
+
+Which Tracks are the most acoustic?
+
+SELECT track_name, artist_name, AVG(acousticness)
+FROM BIT_DB.SpotifyData
+GROUP BY track_name
+ORDER BY avg(acousticness) desc
+LIMIT 10;
+
+Which songs had the highest tempo?
+
+SELECT track_name, artist_name, tempo
+FROM BIT_DB.SpotifyData
+GROUP BY track_name
+ORDER BY tempo desc
+LIMIT 10;
